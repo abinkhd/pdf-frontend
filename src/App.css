@@ -14,3 +14,29 @@
 div {
   margin-bottom: 10px;
 }
+
+.pdfGridStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pdfBoxStyle {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: white;
+  height: 330px;
+  border-radius: 10px;
+  padding: 30px;
+  padding-bottom: 0px;
+}
+
+.pdfPageStyle {
+  z-index: 10px;
+}
+
+.pdfBody {
+  background-color: rgb(136 136 136 / 7%);
+}
