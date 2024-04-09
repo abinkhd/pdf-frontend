@@ -1,7 +1,7 @@
 import { Button, Paper } from "@mui/material";
-import InputFileUpload from "./InputFileUpload";
+import InputFileUpload from "./common/InputFileUpload";
 import React, { useState } from "react";
-import axios from "axios";
+import axios, { Axios, AxiosError } from "axios";
 
 const paperStyle = {
   width: 300,
@@ -12,6 +12,7 @@ const paperStyle = {
 
 const UploadForm = () => {
   const [file, setFile] = useState<any>();
+  const [error, setError] = useState<AxiosError>();
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
@@ -22,9 +23,16 @@ const UploadForm = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
-    const res = await axios.post("http://localhost:5000/upload", formData);
-    console.log(res);
+    try {
+      const res = await axios.post("http://localhost:5000/upload", formData);
+      console.log(res);
+      setFile("");
+    } catch (error) {
+      console.log(error);
+      setError(error as AxiosError);
+    }
   }
+
   return (
     <div className="container">
       <Paper sx={paperStyle}>

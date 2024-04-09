@@ -1,8 +1,9 @@
 import "./App.css";
+import PdfView from "./component/PdfView";
 import UploadForm from "./component/UploadForm";
 
 function App() {
-  return <UploadForm />;
+  return <PdfView />;
 }
 
 export default App;
