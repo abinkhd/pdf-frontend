@@ -25,16 +25,13 @@ div {
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   background-color: white;
-  height: 330px;
+  height: 350px;
   border-radius: 10px;
-  padding: 30px;
-  padding-bottom: 0px;
-}
-
-.pdfPageStyle {
-  z-index: 10px;
+  padding: 20px;
+  padding-top: 50px;
+  position: relative;
 }
 
 .pdfBody {
