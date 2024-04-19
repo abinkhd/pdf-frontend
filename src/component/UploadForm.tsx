@@ -1,7 +1,8 @@
 import { Button, Paper } from "@mui/material";
 import InputFileUpload from "./common/InputFileUpload";
 import React, { useState } from "react";
-import axios, { Axios, AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
+import { useFilename } from "../state-management/hooks/useFilename";
 
 const paperStyle = {
   width: 300,
@@ -11,12 +12,14 @@ const paperStyle = {
 };
 
 const UploadForm = () => {
-  const [file, setFile] = useState<any>();
+  const [file, setFile] = useState<any>("");
+  const { filename, setFilename } = useFilename();
   const [error, setError] = useState<AxiosError>();
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
     setFile(e.target.files[0]);
+    console.log(e.target.files[0]);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -25,7 +28,7 @@ const UploadForm = () => {
     formData.append("file", file);
     try {
       const res = await axios.post("http://localhost:5000/upload", formData);
-      console.log(res);
+      setFilename(res.data.File);
       setFile("");
     } catch (error) {
       console.log(error);

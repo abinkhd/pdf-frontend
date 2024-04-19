@@ -12,6 +12,10 @@ const Buttonstyle = {
 export const MyCreateButton = () => {
   const { selectedPages } = useSelectedPages();
 
+  const handleOnClick = () => {
+    console.log(selectedPages);
+  };
+
   return (
     <div>
       <Fab
@@ -20,6 +24,7 @@ export const MyCreateButton = () => {
         size="small"
         color="primary"
         style={Buttonstyle}
+        onClick={handleOnClick}
       >
         <FilePresentIcon sx={{ mr: 1 }} />
         Create PDF
