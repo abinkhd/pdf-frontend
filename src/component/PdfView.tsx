@@ -68,10 +68,12 @@ export default PdfView;
 
 export const MyPage: FunctionComponent<{ page: number }> = ({ page }) => {
   const { updatePage } = useSelectedPages();
-
+  const reset = false;
   return (
     <Box className="pdfBoxStyle">
-      <MyCheckbox onChange={(value: boolean) => updatePage(value, page)} />
+      <MyCheckbox
+        onChange={(value: boolean) => updatePage(reset, value, page)}
+      />
       <Paper elevation={5}>
         <Page
           height={100}

@@ -3,18 +3,24 @@ import SelectedPagesContext from "./context/SelectedPagesContext";
 
 interface Props {
   children: React.ReactNode;
-}
+} 
+
 
 const SelectedPagesProvider = ({ children }: Props) => {
   const [selectedPages, setSelectedPages] = useState<number[]>([]);
 
-  const updatePage = (value: boolean, pageNumber: number) => {
-    if (value) {
-      setSelectedPages([...selectedPages, pageNumber]);
+  const updatePage = (reset: boolean, value: boolean, pageNumber: number) => {
+    console.log(reset);
+    if (!reset) {
+      if (value) {
+        setSelectedPages([...selectedPages, pageNumber]);
+      } else {
+        setSelectedPages([
+          ...selectedPages.filter((page) => page !== pageNumber),
+        ]);
+      }
     } else {
-      setSelectedPages([
-        ...selectedPages.filter((page) => page !== pageNumber),
-      ]);
+      setSelectedPages([]);
     }
     // setSelectedPages()
   };
