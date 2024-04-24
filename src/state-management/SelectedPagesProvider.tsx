@@ -8,13 +8,6 @@ interface Props {
 const SelectedPagesProvider = ({ children }: Props) => {
   const [selectedPages, setSelectedPages] = useState<number[]>([]);
   // Update Pag logic
-  const updatePage = (value: boolean, pageNumber: number) => {
-    if (value) {
-      setSelectedPages([...selectedPages, pageNumber]);
-    } else {
-      setSelectedPages([
-        ...selectedPages.filter((page) => page !== pageNumber),
-      ]);
 
   const updatePage = (reset: boolean, value: boolean, pageNumber: number) => {
     console.log(reset);
