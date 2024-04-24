@@ -3,21 +3,16 @@ import FilePresentIcon from "@mui/icons-material/FilePresent";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
 import axios from "axios";
 
-const Buttonstyle = {
-  position: "fixed",
-  bottom: "20px",
-  right: "20px",
-  marginBottom: "2px",
-};
+const Buttonstyle = {};
 
 export const MyCreateButton = () => {
-  const { selectedPages,updatePage } = useSelectedPages();
+  const { selectedPages, updatePage } = useSelectedPages();
 
   const handleOnClick = async () => {
     const res = await axios.post("http://localhost:5000/extract", {
       pages: selectedPages,
     });
-    updatePage(true);
+    updatePage(true, false, 0);
     alert(res.data.DownloadPath);
   };
 
@@ -28,7 +23,6 @@ export const MyCreateButton = () => {
         variant="extended"
         size="small"
         color="primary"
-        style={Buttonstyle}
         onClick={handleOnClick}
       >
         <FilePresentIcon sx={{ mr: 1 }} />

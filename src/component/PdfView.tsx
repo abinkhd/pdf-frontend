@@ -58,7 +58,9 @@ const PdfView = () => {
                 </Grid>
               ))}{" "}
           </Grid>
-          <MyCreateButton />
+          <div className="pdfCreateButton">
+            <MyCreateButton />
+          </div>
         </Document>
       </div>
     );
