@@ -3,8 +3,6 @@ import FilePresentIcon from "@mui/icons-material/FilePresent";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
 import axios from "axios";
 
-const Buttonstyle = {};
-
 export const MyCreateButton = () => {
   const { selectedPages, updatePage } = useSelectedPages();
 
