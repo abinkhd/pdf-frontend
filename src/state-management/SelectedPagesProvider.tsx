@@ -15,6 +15,20 @@ const SelectedPagesProvider = ({ children }: Props) => {
       setSelectedPages([
         ...selectedPages.filter((page) => page !== pageNumber),
       ]);
+
+  const updatePage = (reset: boolean, value: boolean, pageNumber: number) => {
+    console.log(reset);
+    if (!reset) {
+      if (value) {
+        setSelectedPages([...selectedPages, pageNumber]);
+      } else {
+        setSelectedPages([
+          ...selectedPages.filter((page) => page !== pageNumber),
+        ]);
+      }
+    } else {
+      //Check if reset.
+      setSelectedPages([]);
     }
     // setSelectedPages()
   };

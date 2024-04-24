@@ -1,6 +1,7 @@
 import { Fab } from "@mui/material";
 import FilePresentIcon from "@mui/icons-material/FilePresent";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
+import axios from "axios";
 
 const Buttonstyle = {
   position: "fixed",
@@ -10,10 +11,14 @@ const Buttonstyle = {
 };
 
 export const MyCreateButton = () => {
-  const { selectedPages } = useSelectedPages();
+  const { selectedPages,updatePage } = useSelectedPages();
 
-  const handleOnClick = () => {
-    console.log(selectedPages);
+  const handleOnClick = async () => {
+    const res = await axios.post("http://localhost:5000/extract", {
+      pages: selectedPages,
+    });
+    updatePage(true);
+    alert(res.data.DownloadPath);
   };
 
   return (
