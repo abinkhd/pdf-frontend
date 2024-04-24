@@ -7,7 +7,7 @@ interface Props {
 
 const SelectedPagesProvider = ({ children }: Props) => {
   const [selectedPages, setSelectedPages] = useState<number[]>([]);
-
+  // Update Pag logic
   const updatePage = (value: boolean, pageNumber: number) => {
     if (value) {
       setSelectedPages([...selectedPages, pageNumber]);
