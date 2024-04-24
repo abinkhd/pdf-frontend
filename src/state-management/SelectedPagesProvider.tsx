@@ -3,8 +3,7 @@ import SelectedPagesContext from "./context/SelectedPagesContext";
 
 interface Props {
   children: React.ReactNode;
-} 
-
+}
 
 const SelectedPagesProvider = ({ children }: Props) => {
   const [selectedPages, setSelectedPages] = useState<number[]>([]);
@@ -20,6 +19,7 @@ const SelectedPagesProvider = ({ children }: Props) => {
         ]);
       }
     } else {
+      //Check if reset.
       setSelectedPages([]);
     }
     // setSelectedPages()
