@@ -3,7 +3,7 @@ import FilePresentIcon from "@mui/icons-material/FilePresent";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
 import axios from "axios";
 
-const endpoint = import.meta.env;
+const endpoint = import.meta.env.VITE_API_URL;
 
 export const MyCreateButton = () => {
   const { selectedPages, updatePage } = useSelectedPages();
