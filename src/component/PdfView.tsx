@@ -13,33 +13,19 @@ import axios, { AxiosError } from "axios";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const columns = { xs: 1, sm: 3, md: 4, xl: 4 };
+const endpoint = import.meta.env.VITE_API_URL;
 
 const PdfView = () => {
   const [file, setFile] = useState<File>();
   const [numPages, setNumPages] = useState<number | undefined>();
   const [pdfDocument, setPdfDocument] = useState();
   const { filename } = useFilename();
-  const filePath = "http://localhost:5000/files/uploaded/" + filename;
-
-  // useEffect(() => {
-  //   async function fetchFile() {
-  //     try {
-  //       const res = await axios.get("http://localhost:5000/files/" + filename);
-  //       console.log(res.data);
-  //       setFile(res.data);
-  //     } catch (error) {
-  //       console.log(error as AxiosError);
-  //     }
-  //   }
-  //   fetchFile();
-  // }, []);
-
-  //
+  const filePath = endpoint + "files/uploaded/" + filename;
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages);
   }
-  if (!filename) return;
+  if (!filename) return null;
   else
     return (
       <div className="pdfBody">

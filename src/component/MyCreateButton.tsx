@@ -3,11 +3,13 @@ import FilePresentIcon from "@mui/icons-material/FilePresent";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
 import axios from "axios";
 
+const endpoint = import.meta.env;
+
 export const MyCreateButton = () => {
   const { selectedPages, updatePage } = useSelectedPages();
 
   const handleOnClick = async () => {
-    const res = await axios.post("http://localhost:5000/extract", {
+    const res = await axios.post(endpoint + "extract", {
       pages: selectedPages,
     });
     updatePage(true, false, 0);
