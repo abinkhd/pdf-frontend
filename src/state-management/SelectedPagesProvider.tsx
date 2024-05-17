@@ -6,21 +6,32 @@ interface Props {
 }
 
 const SelectedPagesProvider = ({ children }: Props) => {
-  const [selectedPages, setSelectedPages] = useState<number[]>([]);
+  const [selectedPages, setSelectedPages] = useState<any[]>([]);
   // Update Pag logic
 
-  const updatePage = (reset: boolean, value: boolean, pageNumber: number) => {
+  const updatePage = (
+    value: boolean,
+    reset: boolean,
+    pageNumber?: number,
+    pageOrder?: any[]
+  ) => {
     console.log(reset);
+    console.log(value);
+
     if (!reset) {
-      if (value) {
-        setSelectedPages([...selectedPages, pageNumber]);
-      } else {
-        setSelectedPages([
-          ...selectedPages.filter((page) => page !== pageNumber),
-        ]);
+      if (pageNumber) {
+        if (value) {
+          setSelectedPages([...selectedPages, pageNumber]);
+        } else {
+          setSelectedPages([
+            ...selectedPages.filter((page) => page !== pageNumber),
+          ]);
+        }
+      } else if (pageOrder) {
+        setSelectedPages(pageOrder);
       }
     } else {
-      //Check if reset.
+      // if reset Logic.
       setSelectedPages([]);
     }
     // setSelectedPages()
