@@ -12,9 +12,10 @@ export const MyCreateButton = () => {
     const res = await axios.post(endpoint + "extract", {
       pages: selectedPages,
     });
-    updatePage(true, false, 0);
+    updatePage(false, true, 0);
     alert(res.data.DownloadPath);
   };
+  console.log(selectedPages);
 
   return (
     <div>

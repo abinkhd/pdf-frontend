@@ -3,9 +3,10 @@ import React from "react";
 export interface SelectedPagesContextType {
   selectedPages: any[] | undefined;
   updatePage: (
+    value: boolean,
     reset: boolean,
-    value: boolean ,
-    pageNumber: number  
+    pageNumber?: number,
+    pageOrder?: any[]
   ) => void;
 }
 const SelectedPagesContext = React.createContext<SelectedPagesContextType>(

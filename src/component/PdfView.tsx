@@ -7,6 +7,7 @@ import { MyCheckbox } from "./MyCheckbox";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
 import { MyCreateButton } from "./MyCreateButton";
 import { useFilename } from "../state-management/hooks/useFilename";
+import { PageOrder } from "./PageOrder";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -43,6 +44,9 @@ const PdfView = () => {
           <div className="pdfCreateButton">
             <MyCreateButton />
           </div>
+          <div className="pageOrder">
+            <PageOrder />
+          </div>
         </Document>
       </div>
     );
@@ -56,7 +60,9 @@ export const MyPage: FunctionComponent<{ page: number }> = ({ page }) => {
   return (
     <Box className="pdfBoxStyle">
       <MyCheckbox
-        onChange={(value: boolean) => updatePage(reset, value, page)}
+        onChange={(value: boolean) => {
+          updatePage(value, reset, page);
+        }}
       />
       <Paper elevation={5}>
         <Page
