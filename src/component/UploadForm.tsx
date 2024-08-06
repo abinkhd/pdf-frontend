@@ -15,7 +15,7 @@ const endpoint = import.meta.env.VITE_API_URL;
 const UploadForm = () => {
   const [file, setFile] = useState<any>("");
   const { filename, setFilename } = useFilename();
-  const [error, setError] = useState<AxiosError>();
+  const [error, setError] = useState<any>();
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
@@ -27,10 +27,11 @@ const UploadForm = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
+    setError("");
+    setFile("");
     try {
       const res = await axios.post(endpoint + "upload", formData);
       setFilename(res.data.File);
-      setFile("");
     } catch (error) {
       console.log(error);
       setError(error as AxiosError);
@@ -55,6 +56,7 @@ const UploadForm = () => {
               Submit
             </Button>
           </div>
+          <em style={{ color: "red" }}>{error?.message}</em>
         </form>
       </Paper>
     </div>
