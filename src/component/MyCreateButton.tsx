@@ -13,7 +13,7 @@ export const MyCreateButton = () => {
       pages: selectedPages,
     });
     updatePage(false, true, 0);
-    alert(res.data.DownloadPath);
+    window.open(res.data.DownloadPath);
   };
   console.log(selectedPages);
 

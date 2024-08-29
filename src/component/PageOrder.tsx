@@ -1,28 +1,37 @@
 import { TextField } from "@mui/material";
 import { useState } from "react";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
-
 export const PageOrder = () => {
   const { selectedPages, updatePage } = useSelectedPages();
-  const [pageOrder, setPageOrder] = useState<string[]>();
+  const [pageOrder, setPageOrder] = useState<any>();
+  const [error, setError] = useState<string>();
 
   const handleOnchange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const input = e.currentTarget.value;
-    const page = input.split(",");
-    setPageOrder(page);
-    console.log(pageOrder);
-    if (page[0] === "") {
-      updatePage(true, false, undefined, []);
+    const regex = /[^0-9][^0-9]*$/.test(input);
+    if (regex) {
+      setError("Alphabets/Special Characters are not allowed");
+      setPageOrder("");
+    } else if (input === "") {
+      setPageOrder("");
     } else {
-      updatePage(true, false, undefined, page);
+      const page = input + ",";
+      const pageNoOrder = [...new Set(input.split(","))];
+      setError("");
+      setPageOrder(page);
+      if (page[0] === "") {
+        updatePage(true, false, undefined, []);
+      } else {
+        updatePage(true, false, undefined, pageNoOrder);
+      }
     }
     // setPageOrder([...pageOrder, newValue]);
   };
 
   return (
-    <div>
+    <div className="pageOrderDiv">
       <TextField
         value={pageOrder}
         onChange={handleOnchange}
@@ -30,6 +39,7 @@ export const PageOrder = () => {
         label="Page Order"
         variant="outlined"
       />
+      <em style={{ fontSize: "x-small", color: "red" }}>{error}</em>
     </div>
   );
 };

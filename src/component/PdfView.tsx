@@ -44,9 +44,6 @@ const PdfView = () => {
           <div className="pdfCreateButton">
             <MyCreateButton />
           </div>
-          <div className="pageOrder">
-            <PageOrder />
-          </div>
         </Document>
       </div>
     );

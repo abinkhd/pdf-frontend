@@ -3,6 +3,7 @@ import InputFileUpload from "./common/InputFileUpload";
 import React, { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useFilename } from "../state-management/hooks/useFilename";
+import { PageOrder } from "./PageOrder";
 
 const paperStyle = {
   width: 300,
@@ -42,7 +43,7 @@ const UploadForm = () => {
     <div className="container">
       <Paper sx={paperStyle}>
         <form onSubmit={handleSubmit} className="form">
-          <h2>Upload your pdf here!!</h2>
+          <h2>Upload your PDF here!!</h2>
           <div>
             <InputFileUpload onChange={handleOnChange} />
           </div>
@@ -59,6 +60,9 @@ const UploadForm = () => {
           <em style={{ color: "red" }}>{error?.message}</em>
         </form>
       </Paper>
+      <div className="pageOrder">
+        <PageOrder />
+      </div>
     </div>
   );
 };

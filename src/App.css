@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  font-family: monospace;
 }
 
 div {
@@ -47,8 +48,12 @@ div {
 }
 
 .pageOrder {
-  position: fixed;
-  bottom: 1px;
-  right: 600px;
+  position: absolute;
+  bottom: 0px;
+  right: 300px;
   /* margin-bottom: 1px; */
+}
+.pageOrderDiv {
+  display: flex;
+  flex-direction: column;
 }
