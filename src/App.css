@@ -51,6 +51,7 @@ div {
   position: absolute;
   bottom: 0px;
   right: 300px;
+  margin: 10px;
   /* margin-bottom: 1px; */
 }
 .pageOrderDiv {

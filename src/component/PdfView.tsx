@@ -7,7 +7,6 @@ import { MyCheckbox } from "./MyCheckbox";
 import { useSelectedPages } from "../state-management/hooks/useSelectedPages";
 import { MyCreateButton } from "./MyCreateButton";
 import { useFilename } from "../state-management/hooks/useFilename";
-import { PageOrder } from "./PageOrder";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 

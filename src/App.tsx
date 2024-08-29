@@ -4,7 +4,6 @@ import PdfView from "./component/PdfView";
 import UploadForm from "./component/UploadForm";
 import SelectedPagesProvider from "./state-management/SelectedPagesProvider";
 import FilenameProvider from "./state-management/FilenameProvider";
-import { useFilename } from "./state-management/hooks/useFilename";
 import Header from "./component/common/Header";
 
 function App() {
