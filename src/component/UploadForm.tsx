@@ -60,9 +60,11 @@ const UploadForm = () => {
           <em style={{ color: "red" }}>{error?.message}</em>
         </form>
       </Paper>
-      <div className="pageOrder">
-        <PageOrder />
-      </div>
+      {filename && (
+        <div className="pageOrder">
+          <PageOrder />
+        </div>
+      )}
     </div>
   );
 };
